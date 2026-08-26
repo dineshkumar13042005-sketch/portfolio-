@@ -249,10 +249,19 @@ function initNavigation() {
       }
     });
 
+    const dockItems = document.querySelectorAll('.dock-item[href^="#"]');
+
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href') === `#${currentSectionId}`) {
         link.classList.add('active');
+      }
+    });
+
+    dockItems.forEach(item => {
+      item.classList.remove('active');
+      if (item.getAttribute('href') === `#${currentSectionId}`) {
+        item.classList.add('active');
       }
     });
   });
