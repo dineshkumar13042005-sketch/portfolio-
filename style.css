@@ -1328,6 +1328,196 @@ body {
 }
 
 /* ==========================================================================
+   Mobile-First App Layout & Bottom Dock Navigation
+   ========================================================================== */
+.mobile-bottom-dock {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Disable Desktop Cursor on Touch Screens */
+  .custom-cursor, .cursor-follower {
+    display: none !important;
+  }
+
+  body {
+    padding-bottom: 5.5rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-padding {
+    padding: 4rem 0;
+  }
+
+  .navbar {
+    top: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+
+  .nav-container {
+    padding: 0.45rem 1rem;
+  }
+
+  .nav-actions .btn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .hero {
+    padding-top: 5.5rem;
+    padding-bottom: 2rem;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    line-height: 1.15;
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .hero-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    text-align: center;
+    padding-top: 1.25rem;
+  }
+
+  .hero-stat-number {
+    font-size: 1.4rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.7rem;
+  }
+
+  .hero-visual-card {
+    max-width: 280px;
+    margin-top: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .certs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline::before {
+    left: 14px;
+  }
+
+  .timeline-item {
+    padding-left: 2.5rem;
+  }
+
+  .timeline-node {
+    left: 7px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .timeline-card {
+    padding: 1.25rem;
+  }
+
+  /* PDF Mobile Responsive Paper */
+  .pdf-scroll-viewport {
+    padding: 1rem 0.5rem;
+  }
+
+  .pdf-paper {
+    padding: 1.5rem 1.1rem !important;
+    font-size: 0.82rem !important;
+    border-radius: 4px;
+  }
+
+  .pdf-paper h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .pdf-paper .pdf-subtitle {
+    font-size: 0.88rem !important;
+  }
+
+  .pdf-paper .pdf-contact-row {
+    font-size: 0.78rem !important;
+  }
+
+  /* Fixed Floating Mobile App Bottom Dock */
+  .mobile-bottom-dock {
+    display: flex;
+    position: fixed;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 1.5rem);
+    max-width: 480px;
+    background: rgba(10, 10, 18, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glow);
+    border-radius: var(--radius-full);
+    padding: 0.45rem 0.6rem;
+    z-index: 9999;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(139, 92, 246, 0.25);
+  }
+
+  .dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 0.3rem 0.45rem;
+    border-radius: var(--radius-full);
+    transition: all 0.2s ease;
+  }
+
+  .dock-item.active, .dock-item:hover {
+    color: #fff;
+    background: rgba(139, 92, 246, 0.2);
+  }
+
+  .dock-item.call-action {
+    color: var(--primary-light);
+  }
+
+  .dock-item.wa-action {
+    color: #25d366;
+  }
+}
+
+/* ==========================================================================
    Realistic PDF Document Viewer Styling
    ========================================================================== */
 .pdf-modal-container {
