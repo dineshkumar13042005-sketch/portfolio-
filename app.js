@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initResumeModal();
   initContactForm();
   initScrollAnimations();
+  initPhotoLightbox();
 });
 
 /* --------------------------------------------------------------------------
@@ -463,3 +464,42 @@ function initScrollAnimations() {
     observer.observe(el);
   });
 }
+
+/* --------------------------------------------------------------------------
+   11. High-Resolution Photo Lightbox Modal
+   -------------------------------------------------------------------------- */
+function initPhotoLightbox() {
+  const modal = document.getElementById('photo-lightbox-modal');
+  const overlay = document.getElementById('photo-modal-overlay');
+  const closeBtn = document.getElementById('photo-modal-close');
+  const triggers = [
+    document.getElementById('hero-photo-trigger'),
+    document.getElementById('about-photo-trigger')
+  ].filter(Boolean);
+
+  if (!modal) return;
+
+  function openPhotoModal() {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePhotoModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', openPhotoModal);
+  });
+
+  if (overlay) overlay.addEventListener('click', closePhotoModal);
+  if (closeBtn) closeBtn.addEventListener('click', closePhotoModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closePhotoModal();
+    }
+  });
+}
+
